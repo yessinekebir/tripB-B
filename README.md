@@ -6,7 +6,8 @@ Per l'integrazione tra server in Node ed il database in MongoDB è stato utilizz
 
 Il middleware implementato ed utilizzato per gran parte delle chiamate API è : auth ; Posizionato in middlewares/auth.js  (Ha la funzione di controllare se l'utente ha effettuato l'accesso o meno)
 
-Server:
+***Server:***
+
 **/signup** - Registrazione di un utente  > Chiamata di tipo POST (Creazione di una risorsa) ->  Nome,cognome,email,password (La password prima di essere salvata nel database, per motivi di sicurezza, viene criptata tramite il pacchetto bcrypt. )
 
 **/login** - Accesso tramite credenziali registrate > Chiamata di tipo POST   -> Email e password richiesti (Converte nuovamente la password dell'utente ,viene confrontata con la password precedentemente criptata, se uguale , viene lasciato un token , con il quale è possibile effettuare diverse chiamate API quali (Aggiunta di un'annuncio di una casa, affitto di una casa, like ad un annuncio di una casa ed aprire la chat con l'autore dell'annuncio))
