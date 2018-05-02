@@ -41,9 +41,7 @@ router.post('/login', function(req, res) {
 router.get('/me', auth.verify, function(req, res, next) {
     res.json(req.user);
 });
-router.get('/name', auth.verify, function(req, res) {
-    res.json(req.user.name);
-})
+
 //Cerco un utente per nome (Devo essere loggato)
 router.get('/users/:name', function(req, res) {
   User.find({name: req.params.name}, 'name email', function (err, users) {
