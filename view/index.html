@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Trip B&B</title>
+  <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="img/favicon.ico">
+  <link href='https://fonts.googleapis.com/css?family=Anton|Passion+One|PT+Sans+Caption' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body class ="bg">
+  <div id="app" v-cloak>
+    <div class="row" style="margin-top:60px;">
+
+      <div class="col-lg-12 text-center margin-top">
+
+        <h1><i style="font-size:0.3em;" class="fas fa-exclamation-circle"></i>Trip B&B </h1>
+        <p class="lead">Case vacanze e alloggi in tutti il mondo &nbsp &nbsp<i class="fas fa-globe"></i>
+
+        </p>
+
+        <aside class="offset-md-12" v-if='!currentUser'>
+          <div class="offset-md-9">
+            <button class="btn btn-info icon-pulse" @click='signUp = !signUp'>Signup <i class="fas fa-user-plus icon"></i></button>
+            <button class="btn btn-success icon-wobble-horizontal" @click='logIn = !logIn'>Login <i class="fas fa-sign-in-alt icon"></i></button>
+
+
+          </div>
+        </aside>
+        <aside class="offset-md-12" v-if='currentUser'>
+          <div class="offset-md-9">
+            <h2 id="welcome">Benvenuto {{currentUser.name}}</h2>
+            <button class="btn btn-info icon-pulse" @click='add = !add '>Aggiungi una casa <i class="fas fa-home icon"></i></button>
+            <button class="btn btn-info icon-pulse" @click='account = !account '>Account <i class="fas fa-user"></i></button>
+            <button style="margin-top:8px;"class="btn btn-success icon-wobble-horizontal" @click='logout()'>Logout<i class="fas fa-sign-in-alt icon"></i></button>
+          </aside>
+          <div class="row">
+            <form class="col-md-9">
+              <div class="input-group input-group-lg col-md-6 offset-md-5 ">
+                <input type="text" v-model="citySearch" class="center-block form-control input-lg" title="Destinazione" placeholder="Inserisci la citta' di destinazione .." list="houses" @input="Allhouses()">
+                <datalist id="houses" >
+                  <option v-for='house in houses'>{{house.city}}</option>
+                </datalist>
+                <span class="input-group-btn"><button class="btn btn-lg btn-success" type="button"><i class="fa fa-search"></i></button></span>
+              </div>
+            </form>
+            <div v-if='account' class="card border-success mb-3 col-md-3" style="max-width: 18rem;">
+              <div class="card-header text-success">Informazioni personali</div>
+              <p>Nome: {{currentUser.name}}</p>
+              <p>Cognome: {{currentUser.surname}}</p>
+              <p>Email: {{currentUser.email}}</p>
+              <p>N.Case inserite: {{currentUser.house.length}}</p>
+            </div>
+
+            <div v-if='logIn' class="col-md-4 offset-md-4">
+              <login v-bind:accesso='userLogin' v-bind:fn='login'></login>
+              <div class="alert alert-success margin-top" role="alert" v-if = 'systemMessage == "logged" '>
+                <span>Login effettuato con successo</span>
+              </div>
+              <div class="row" v-if='is404 || is401'>
+                <div class=" col-md-12 alert alert-danger" >Autenticazione fallita - Dati non riconosciuti <button class="btn btn-info icon-pulse" style="float:right; padding-bottom:5px;" @click='signUp = !signUp'>Registrati <i class="fas fa-user-plus icon"></i></button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 offset-md-4">
+              <signup v-if='signUp' v-bind:user='newUser' v-bind:fn='signup'></signup>
+              <div class="alert alert-success margin-top" role="alert" v-if = 'systemMessage == "signedUp" '>
+                <span>Registrazione effettuata con successo</span>
+              </div>
+              <addhouse v-if='add'v-bind:house='newHouse' v-bind:fn='addNewHouse'></addhouse>
+              <div class="alert alert-success margin-top" role="alert" v-if = 'systemMessage == "houseAdded" '>
+                <span>Casa aggiunta con successo</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div v-if='currentUser'>
+          <div class="row margin-top inline"  v-for='house in houses' >
+            <div v-if='house.city == citySearch' class="card" style="width: 18rem; margin-left:50px;">
+              <img class="card-img-top" style="position:relative;" src="img/img.png" alt="Card image cap">
+              <div style="position:absolute;transform:rotate(-45deg);margin-left:-10px;"v-for='user in users'>
+                <span v-if='house.admin == user._id'><div class="badge badge-pill badge-success">{{user.name}}</div>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title ">{{house.city}}</h5>
+                  <p class="card-text">{{house.address}}</p>
+                  <p class="card-text">{{house.price}}€ a notte</p>
+                      <button class="btn btn-info" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Inserisci date</button>
+                      <div class="collapse" id="collapseExample" style="margin-top:5px;">
+                      <p>Start:</p> <input v-model='rent.start' type="text">
+                      <p>End:</p> <input v-model='rent.end' type="text">
+                      <button @click='rentHouse(house._id)' class="btn btn-success" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Affitta</button>
+
+                    </div>
+                  <div style="float:right;">
+                    <i @click='like(house._id)' class="fas fa-heart" style="color:red;font-size:25px;"></i><span class="badge badge-light">{{house.likes}}</span>  <!--LIKE, API INCOMPLETA -->
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+        <footer>
+          <script src="bower_components/vue/dist/vue.min.js"></script>
+          <script src="bower_components/vue-resource/dist/vue-resource.min.js"></script>
+          <script src="bower_components/jquery/dist/jquery.min.js"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+          <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+          <script src="js/signup.js"></script>
+          <script src="js/login.js"></script>
+          <script src="js/addHouse.js"></script>
+          <script src="js/app.js"></script>
+          <script src="js/myFunctions.js"></script>
+        </footer>
+      </body>
+      </html>
