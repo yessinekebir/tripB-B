@@ -1,8 +1,8 @@
 # Server : NodeJs (Express)    -    Database : MongoDB    -   Client : Vue JS
 Il progetto in questione simula un sistema di affitto case vacanza.
- // Le API utilizzate per il seguente progetto seguono tutte la filosofia REST.
- // Per l'integrazione tra server in Node ed il database in MongoDB è stato utilizzato Mongoose
- // Il middlewares implementato ed utilizzato per gran parte delle chiamate API è : auth ; Posizionato in middlewares/auth.js  (Ha la funzione di controllare se l'utente ha effettuato l'accesso o meno)
+# Le API utilizzate per il seguente progetto seguono tutte la filosofia REST.
+# Per l'integrazione tra server in Node ed il database in MongoDB è stato utilizzato Mongoose
+# Il middleware implementato ed utilizzato per gran parte delle chiamate API è : auth ; Posizionato in middlewares/auth.js  (Ha la funzione di controllare se l'utente ha effettuato l'accesso o meno)
 Server:
 **/signup** - Registrazione di un utente  > Chiamata di tipo POST (Creazione di una risorsa) ->  Nome,cognome,email,password (La password prima di essere salvata nel database, per motivi di sicurezza, viene criptata tramite il pacchetto bcrypt. )
 
