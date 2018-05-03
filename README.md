@@ -27,7 +27,6 @@ Il middleware implementato ed utilizzato per gran parte delle chiamate API è : 
 
 **LOG**
 
-| Name     | Character |
+| Data     | Descrizione |
 | ---      | ---       |
 | 03/05/2018 | Aggiunta *Presentazione TripBnB.pdf*         |
-| -     | \|        |
