@@ -19,14 +19,7 @@ else {
   });
 }
 })
-/*
-router.get('/', function(req,res){
-House.find(function(err,houses) {
-  if(err) return res.status(500).json({error:err});
-  House.res.json('Case in affitto -'+houses);
-});
 
-}) */
 // Aggiungere nuovo annuncio di una casa
 router.post('/', auth.verify,  function(req, res){
     var house = new House();
@@ -80,7 +73,7 @@ router.post('/:id/like', function(req, res, next) {
   });
 
 })
-*/
 
+*/
 
 module.exports = router;
