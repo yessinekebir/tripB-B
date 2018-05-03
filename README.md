@@ -24,7 +24,9 @@ Il middleware implementato ed utilizzato per gran parte delle chiamate API è : 
 * [X] **/houses/:id/rent** - Affitto di una casa (Login richiesto) > Chiamata di tipo POST  -> ID_Casa , data di inizio e data di fine soggiorno richiesti.  (Il campo id_casa viene riempito al click di un determinato annuncio) // Di default quando un utente affitta una casa, il campo rent dello schema dell'utente , viene riempito con l'id della casa affittata
 
 * [ ] **/houses/:id/like** - Like verso un annuncio (Login richiesto) > Chiamata di tipo POST -> id_casa richiesto, associato in automatico con il click sull'icona del like.
-**#LOG**
+
+**LOG**
+
 | Name     | Character |
 | ---      | ---       |
 | 03/05/2018 | Aggiunta *Presentazione TripBnB.pdf*         |
