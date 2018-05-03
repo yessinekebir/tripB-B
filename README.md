@@ -1,5 +1,7 @@
+# Architettura del sistema: Client - Server
 # Server : NodeJs (Express)    -    Database : MongoDB    -   Client : Vue Js
 Il progetto in questione simula un sistema di affitto case vacanza.
+
 Le API utilizzate per il seguente progetto seguono tutte la filosofia REST.
 
 Per l'integrazione tra server in Node ed il database in MongoDB è stato utilizzato Mongoose.
@@ -18,4 +20,4 @@ Il middleware implementato ed utilizzato per gran parte delle chiamate API è : 
 
 **/houses/:id/rent** - Affitto di una casa (Login richiesto) > Chiamata di tipo POST  -> ID_Casa , data di inizio e data di fine soggiorno richiesti.  (Il campo id_casa viene riempito al click di un determinato annuncio) // Di default quando un utente affitta una casa, il campo rent dello schema dell'utente , viene riempito con l'id della casa affittata
 
-**/houses/:id/like** - Like verso un annuncio (Login richiesto) > Chiamata di tipo POST -> id_casa richiesto, associato in automatico con il click sull'icona del cuore.
+**/houses/:id/like** - Like verso un annuncio (Login richiesto) > Chiamata di tipo POST -> id_casa richiesto, associato in automatico con il click sull'icona del like.
