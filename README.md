@@ -25,8 +25,6 @@ Il middleware implementato ed utilizzato per gran parte delle chiamate API è : 
 
 * [ ] **/houses/:id/like** - Like verso un annuncio (Login richiesto) > Chiamata di tipo POST -> id_casa richiesto, associato in automatico con il click sull'icona del like.
 **#LOG**
-| Data | Description |
+| Data | Descrizione |
 | --- | --- |
-| `03/05/2018` | Presentazione TripBnB.pdf |
-| `-` | - |-----------|
- Presentazione aggiunta alla cartella di lavoro -> Presentazione TripBnB.pdf
+| `03/05/2018` | Aggiunta *Presentazione TripBnB.pdf*  |
