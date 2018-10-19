@@ -34,14 +34,40 @@ Il middleware implementato ed utilizzato per gran parte delle chiamate API è : 
 
 
 
+### Setup & Info ###
+Environments: `DEV`,`QUAL`, `UAT`, `PROD`.
 
+ **Building SXP**
+  ## REQUIREMENTS ##
+    - Cordova
+    - Ruby
+    - Cocoapods
+    - iOS App Token
+    - NewRelic
+ 
+  ### Steps ###
+   - Install Cordova 
+      > `sudo npm install -g cordova`
+   - Add Cordova Platform
+      > `cordova platform add ios`
+   - Install Cocoapods
+      > `sudo gem install cocoapods`
+   - Setting up CocoaPods
+      > `pod setup`
+   - Install newrelic cordova plugin
+     > `cordova plugin add https://github.com/newrelic/newrelic-cordova-plugin.git --variable IOS_APP_TOKEN="{ios-app-token}" --variable ANDROID_APP_TOKEN="{android-app-token}"`
+   - Build app
+     > `cordova build ios` (from /cordova)
 
 ### Commands: ###
 `yarn start` 
->	Run instance of application on port 3000 using stub.
+>	Run instance of application on port 3000 using stub in **DEV** env.
 
 `yarn start:qual`
->	Run instance of application on port 3000 using api of quality. 	
+>	Run instance of application on port 3000 using api of **quality** env. 	
+
+`yarn start:prod`
+>	Run instance of application on port 3000 using api of **production** env. 	
 
 `yarn cordova-build`
 >	Build instance of application using api of quality with valentino certificate. 	
@@ -51,4 +77,3 @@ Il middleware implementato ed utilizzato per gran parte delle chiamate API è : 
 
 `yarn cordova-build:prod`
 >	Build instance of application using api of production with valentino certificate. 			
-
