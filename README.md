@@ -34,11 +34,12 @@ Il middleware implementato ed utilizzato per gran parte delle chiamate API è : 
 
 
 
-### Setup & Info ###
+
+## Setup & Info ##
 Environments: `DEV`,`QUAL`, `UAT`, `PROD`.
 
  **Building SXP**
-  ## REQUIREMENTS ##
+  ### REQUIREMENTS ###
     - Cordova
     - Ruby
     - Cocoapods
@@ -77,3 +78,4 @@ Environments: `DEV`,`QUAL`, `UAT`, `PROD`.
 
 `yarn cordova-build:prod`
 >	Build instance of application using api of production with valentino certificate. 			
+
