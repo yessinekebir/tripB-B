@@ -36,10 +36,10 @@ Il middleware implementato ed utilizzato per gran parte delle chiamate API è : 
 
 
 ## Setup & Info ##
-Environments: `DEV`,`QUAL`, `UAT`, `PROD`.
+**Environments:** 
+ `DEV`,`QUAL`, `UAT`, `PROD`.
 
- **Building SXP**
-  ### REQUIREMENTS ###
+  ### Requirements ###
     - Cordova
     - Ruby
     - Cocoapods
