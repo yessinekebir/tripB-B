@@ -30,3 +30,25 @@ Il middleware implementato ed utilizzato per gran parte delle chiamate API è : 
 | Data     | Descrizione |
 | ---      | ---       |
 | 03/05/2018 | Aggiunta *Presentazione TripBnB.pdf*         |
+
+
+
+
+
+
+### Commands: ###
+`yarn start` 
+>	Run instance of application on port 3000 using stub.
+
+`yarn start:qual`
+>	Run instance of application on port 3000 using api of quality. 	
+
+`yarn cordova-build`
+>	Build instance of application using api of quality with valentino certificate. 	
+
+`yarn cordova-build:uat`
+>	Build instance of application using api of uat with valentino certificate. 		
+
+`yarn cordova-build:prod`
+>	Build instance of application using api of production with valentino certificate. 			
+
